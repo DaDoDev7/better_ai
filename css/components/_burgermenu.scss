@@ -1,11 +1,11 @@
 
 .btn13 {
-    position: relative;
+    position: absolute;
     width: 60px;
     height: 60px;
     transition-duration: 0.5s;
-    right:-10px;
-    top: -3px;
+    right:1em;
+    top: 1em;
     @media screen and (min-width:768px){
         display: none;
     }
@@ -16,7 +16,7 @@
     height: 4px;
     width: 30px;
     top: 30px;
-    background-color: #222222;
+    background-color: white;
     border-radius: 5px;
   }
   .btn13 .icon:before {
@@ -24,7 +24,7 @@
     position: absolute;
     width: 30px;
     height: 4px;
-    background-color: #222222;
+    background-color: white;
     content: "";
     top: -10px;
     border-radius: 5px;
@@ -34,22 +34,22 @@
     position: absolute;
     width: 30px;
     height: 4px;
-    background-color: #222222;
+    background-color: white;
     content: "";
     top: 10px;
     border-radius: 5px;
   }
   .btn13.open .icon {
     transition: 0.5s;
-    background-color:white;
+    background-color:#4AB5B9;
   }
   .btn13.open .icon:before {
     transform: rotateZ(-45deg) scaleX(0.75) translate(-10px, -3px);
-    background-color:white;
+    background-color:#4AB5B9;
   }
   .btn13.open .icon:after {
     transform: rotateZ(45deg) scaleX(0.75) translate(-10px, 3px);
-    background-color:white;
+    background-color:#4AB5B9;
   }
   .btn13:hover {
     cursor: pointer;

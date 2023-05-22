@@ -1,0 +1,36 @@
+.results{
+    display: flex;
+    columns: 2;
+}
+
+
+
+.liveMatchesContainer{
+    color: white;
+    font-size: 14px;
+    position: relative;
+    z-index: 2;
+    outline: 3px white solid;
+
+    h1 , p{
+        color: white;
+    }
+    
+}
+
+// schedules 
+
+.teamlogo{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    
+}
+
+.match{
+    display: flex;
+    align-items: center;
+}

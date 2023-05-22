@@ -6,11 +6,12 @@ nav{
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    z-index: 2;
+    z-index: 55;
     &.active{
       background-color: black;
       
     }
+  
    
 }
 .logo{

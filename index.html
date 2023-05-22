@@ -18,7 +18,7 @@
     
     <!-- LOADER -->
 
-    <div id="loader_wrapper">
+    <!-- <div id="loader_wrapper">
         <h4>Better AI</h4>
         <div class="spinner">
         
@@ -29,7 +29,7 @@
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
     <!-- NAVIGATION -->
 
     <nav class="nav">
@@ -86,7 +86,35 @@
 
         <section id="results" class="results section">
 
-            games
+            <div id="live" class="liveMatchesContainer">
+                <h1>Live Matches</h1>
+                <div v-for="match in matches" :key="match.id" class="match">
+                  <div class="teamlogo">
+                    <img :src="match.homeTeam.image" alt="Home Team Logo" class="team-logo" />
+                  </div>
+                  <p>{{ match.homeTeam.name }} vs {{ match.awayTeam.name }}</p>
+                  <div class="teamlogo">
+                    <img :src="match.awayTeam.image" alt="Away Team Logo" class="team-logo" />
+                  </div>
+                  <p>{{ match.homeScore.current }} - {{ match.awayScore.current }}</p>
+                  <p>Ligue: {{ match.tournament.name }}</p>
+                </div>
+              </div>
+              
+            <div id="schedules" class="liveMatchesContainer">
+                <h1>Schedules</h1>
+                <div v-for="match in matches" :key="match.id" class="match">
+                  <div class="teamlogo">
+                 
+                  </div>
+                  <p>{{ match.homeTeam.name }} vs {{ match.awayTeam.name }}</p>
+                  <div class="teamlogo">
+               
+                  </div>
+                  <p>{{ match.homeScore.current }} - {{ match.awayScore.current }}</p>
+                  <p>Ligue: {{ match.tournament.name }}</p>
+                </div>
+              </div>
 
         </section>
 
@@ -104,8 +132,10 @@
         <!-- FOOTER END -->
 
     </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://kit.fontawesome.com/e7815bde46.js" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
     <script src="js/api.js"></script>
 </body>
 </html>
