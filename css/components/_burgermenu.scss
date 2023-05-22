@@ -1,0 +1,56 @@
+
+.btn13 {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    transition-duration: 0.5s;
+    right:-10px;
+    top: -3px;
+    @media screen and (min-width:768px){
+        display: none;
+    }
+  }
+  .btn13 .icon {
+    transition-duration: 0.5s;
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    top: 30px;
+    background-color: #222222;
+    border-radius: 5px;
+  }
+  .btn13 .icon:before {
+    transition-duration: 0.5s;
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background-color: #222222;
+    content: "";
+    top: -10px;
+    border-radius: 5px;
+  }
+  .btn13 .icon:after {
+    transition-duration: 0.5s;
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background-color: #222222;
+    content: "";
+    top: 10px;
+    border-radius: 5px;
+  }
+  .btn13.open .icon {
+    transition: 0.5s;
+    background-color:white;
+  }
+  .btn13.open .icon:before {
+    transform: rotateZ(-45deg) scaleX(0.75) translate(-10px, -3px);
+    background-color:white;
+  }
+  .btn13.open .icon:after {
+    transform: rotateZ(45deg) scaleX(0.75) translate(-10px, 3px);
+    background-color:white;
+  }
+  .btn13:hover {
+    cursor: pointer;
+  }

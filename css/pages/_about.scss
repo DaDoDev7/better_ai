@@ -1,0 +1,88 @@
+.about{
+    position: relative;
+    background: url(/img/vecteezy_abstract-background-technology-high-speed-racing-for-sports_6925941.jpg) center/cover;
+    color: white;
+    filter: brightness(1); 
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.466);
+    }
+}
+.news{
+    width:350px ;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.title_header{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 50px;
+    
+}
+.description{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    bottom: 20%;
+    text-align: center;
+    font-size: 30px;
+
+    
+}
+.appearable span{
+    color: #4AB5B9;
+    font-style: italic;
+    text-transform: capitalize;
+       
+}
+
+//writing animation 
+
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #4AB5B9 0%,
+    #cddbdb 29%,
+    #247375 7%,
+    #f3f8f8 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 7s linear forwards;
+  display: inline-block;
+    
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+
+//appearable
+
+.appearable {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.8s ease 3.2s, transform 0.5s ease 3.2s;
+    
+    
+  }
