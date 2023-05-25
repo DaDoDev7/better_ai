@@ -18,7 +18,7 @@
     
     <!-- LOADER -->
 
-    <div id="loader_wrapper">
+    <!-- <div id="loader_wrapper">
         <h4>Better AI</h4>
         <div class="spinner">
         
@@ -29,7 +29,7 @@
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
     <!-- NAVIGATION -->
 
     <nav class="nav">
@@ -89,17 +89,19 @@
             <div id="live" class="liveMatchesContainer">
                 <h1>Live Matches</h1>
                 <div v-for="match in matches" :key="match.id" class="match">
-                  <div class="teamlogo">
+                  <div class="teamLogo">
                     <img :src="match.homeTeam.image" alt="Home Team Logo" class="team-logo" />
                   </div>
                   <p>{{ match.homeTeam.name }} vs {{ match.awayTeam.name }}</p>
-                  <div class="teamlogo">
+                  <div class="teamLogo">
                     <img :src="match.awayTeam.image" alt="Away Team Logo" class="team-logo" />
                   </div>
                   <p>{{ match.homeScore.current }} - {{ match.awayScore.current }}</p>
                   <p>Ligue: {{ match.tournament.name }}</p>
                 </div>
               </div>
+              
+              
               
             <div id="schedules" class="liveMatchesContainer">
                 <h1>Schedules</h1>
@@ -114,6 +116,10 @@
                   <p>{{ match.homeScore.current }} - {{ match.awayScore.current }}</p>
                   <p>Ligue: {{ match.tournament.name }}</p>
                 </div>
+              </div>
+
+              <div class="rankings">
+            
               </div>
 
         </section>
