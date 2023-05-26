@@ -44,10 +44,10 @@
                     <a href="#about">About</a>
                 </div>
                 <div class="txt-outline">
-                    <a href="#results">Results</a>
+                    <a href="#calendar_writing">Results</a>
                 </div>
                 <div class="txt-outline">
-                    <a href="#ai_generator"> AI </a>
+                    <a href="#particles-js"> AI </a>
                 </div>
            
        </div>
@@ -83,9 +83,10 @@
         </section>
 
         <!-- //RESULTS -->
+        <h1 id="calendar_writing"  class="calendar_writing">Calendar and live games</h1> 
 
         <section id="results" class="results section">
-
+          
             <div id="live" class="liveMatchesContainer">
                 <h1>Live Matches</h1>
                 <div v-for="match in matches" :key="match.id" class="match">
@@ -101,7 +102,7 @@
                 </div>
               </div>
               
-              
+            
               
             <div id="schedules" class="liveMatchesContainer">
                 <h1>Schedules</h1>
@@ -109,16 +110,34 @@
                   <div class="teamlogo">
                  
                   </div>
+                  <div class="teamLogo">
+                    <img :src="match.homeTeam.image" alt="Home Team Logo" class="team-logo" />
+                  </div>
                   <p>{{ match.homeTeam.name }} vs {{ match.awayTeam.name }}</p>
-                  <div class="teamlogo">
-               
+                  <div class="teamLogo">
+                    <img :src="match.awayTeam.image" alt="Away Team Logo" class="team-logo" />
                   </div>
                   <p>{{ match.homeScore.current }} - {{ match.awayScore.current }}</p>
                   <p>Ligue: {{ match.tournament.name }}</p>
                 </div>
               </div>
 
-              <div class="rankings">
+              <div id="rankings" class="liveMatchesContainer">
+                <h1>Rankings</h1>
+                <div v-for="match in matches" :key="match.id" class="match">
+                  <div class="teamlogo">
+                 
+                  </div>
+                  <div class="teamLogo">
+                    <img :src="match.homeTeam.image" alt="Home Team Logo" class="team-logo" />
+                  </div>
+                  <p>{{ match.homeTeam.name }} vs {{ match.awayTeam.name }}</p>
+                  <div class="teamLogo">
+                    <img :src="match.awayTeam.image" alt="Away Team Logo" class="team-logo" />
+                  </div>
+                  <p>{{ match.homeScore.current }} - {{ match.awayScore.current }}</p>
+                  <p>Ligue: {{ match.tournament.name }}</p>
+                </div>
             
               </div>
 
@@ -126,22 +145,90 @@
 
         <!-- AI generator  -->
 
-        <section id="ai_generator" class="ai_generator section">
+        <section id="particles-js" class="ai_generator">
+            <div class="ai_window">
+                <div class="football"><img class="football_img"  src="img/footballsvg.svg" alt=""></div>
+                <h1>Click on any of the matches to get the AI odds</h1>
+                <h6>Tomorrow's top 10 matches</h6>
+                <div class="ai_window_matches">
+                    <div class="match_ai">
+                        <div class="logoteam"></div><span>Atletico Madrid</span>
+                       <span>Atletico Madrid</span><div class="logoteam"></div>
+                    </div>
+                    <div class="match_ai">
+                        <div class="logoteam"></div><span>Atletico Madrid</span>
+                       <span>Atletico Madrid</span><div class="logoteam"></div>
+                    </div>
+                    <div class="match_ai">
+                        <div class="logoteam"></div><span>Atletico Madrid</span>
+                       <span>Atletico Madrid</span><div class="logoteam"></div>
+                    </div>
+                    <div class="match_ai">
+                        <div class="logoteam"></div><span>Atletico Madrid</span>
+                       <span>Atletico Madrid</span><div class="logoteam"></div>
+                    </div>
+                    <div class="match_ai">
+                        <div class="logoteam"></div><span>Atletico Madrid</span>
+                       <span>Atletico Madrid</span><div class="logoteam"></div>
+                    </div>
+                    <div class="match_ai">
+                        <div class="logoteam"></div><span>Atletico Madrid</span>
+                       <span>Atletico Madrid</span><div class="logoteam"></div>
+                    </div>
+                    <div class="match_ai">
+                        <div class="logoteam"></div><span>Atletico Madrid</span>
+                       <span>Atletico Madrid</span><div class="logoteam"></div>
+                    </div>
+                    <div class="match_ai">
+                        <div class="logoteam"></div><span>Atletico Madrid</span>
+                       <span>Atletico Madrid</span><div class="logoteam"></div>
+                    </div>
+                    <div class="match_ai">
+                        <div class="logoteam"></div><span>Atletico Madrid</span>
+                       <span>Atletico Madrid</span><div class="logoteam"></div>
+                    </div>
+                    <div class="match_ai">
+                        <div class="logoteam"></div><span>Atletico Madrid</span>
+                       <span>Atletico Madrid</span><div class="logoteam"></div>
+                    </div>
+                    <div class="match_ai">
+                        <div class="logoteam"></div><span>Atletico Madrid</span>
+                       <span>Atletico Madrid</span><div class="logoteam"></div>
+                    </div>
+                 </div>
+            </div>
+            <!-- overlay -->
+
+            <div class="overlay"></div>
+
+            <!-- end overlay -->
+            
+            <div class="modalwindow">
+              <div class="closebtn"><i class="fa-solid fa-xmark"></i></div>
+              <div class="openai_answer">
+                <span class="word"></span>
+              </div>
+            </div>
 
         </section>
 
         <!-- FOOTER STARTS -->
         <footer>
             <div class="link_list"></div>
-            <div class="partners"></div>
+            <div class="partners">
+              <div class="logoOpenAI"><img src="img/open-ai-seeklogo.com.svg" alt=""></div>
+              <div class="logoFootApi"><img src="" alt=""></div>
+            </div>
         </footer>
         <!-- FOOTER END -->
 
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://kit.fontawesome.com/e7815bde46.js" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/api.js"></script>
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>   
+     <script src="js/main.js"></script>
+  
+    <!-- <script src="js/app.js"></script>
+    <script src="js/api.js"></script> -->
 </body>
 </html>
