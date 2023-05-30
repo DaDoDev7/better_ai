@@ -1,122 +1,156 @@
-// const currentDate = new Date();
-// const day = currentDate.getDate();
-// const month = currentDate.getMonth();
-// const year = currentDate.getFullYear();
-// const formattedDate = `${day}/${month}/${year}`;
+// typing animation
 
-// const fetchMatchesWithRetry = (url, options, maxRetries, retryDelay) => {
-//   let retries = 0;
+var words = [' asudhiauyshdiasuhdsaiuhdiasud'];
+var currentWordIndex = 0;
+var currentCharIndex = 0;
+var forwards = true;
+var speed = 70;
 
-//   const fetchMatches = () => {
-//     return fetch(url, options)
-//       .then(response => {
-//         if (!response.ok) {
-//           throw new Error('Errore nella richiesta');
-//         }
-//         return response.json();
-//       })
-//       .catch(error => {
-//         console.error('Errore durante la richiesta delle informazioni sulle partite:', error);
-//         throw error;
-//       });
-//   };
+var wordElement = document.querySelector('.word');
+var parentElement = wordElement.parentNode;
 
-//   const retry = () => {
-//     retries++;
+var wordflick = function () {
+  var intervalId; // Variabile per l'ID dell'intervallo
 
-//     if (retries <= maxRetries) {
-//       console.log(`Tentativo ${retries} di ${maxRetries} - Ritento dopo ${retryDelay}ms`);
+  var startAnimation = function () {
+    intervalId = setInterval(function () {
+      var currentWord = words[currentWordIndex];
 
-//       return new Promise(resolve => setTimeout(resolve, retryDelay)).then(fetchMatches);
-//     } else {
-//       console.error('Numero massimo di tentativi raggiunto');
-//       throw new Error('Numero massimo di tentativi raggiunto');
-//     }
-//   };
+      if (forwards) {
+        if (currentCharIndex >= currentWord.length) {
+          forwards = false;
+        }
+      }
+      else {
+        if (currentCharIndex == 0) {
+          forwards = true;
+          currentWordIndex++;
+          if (currentWordIndex >= words.length) {
+            currentWordIndex = 0;
+          }
+        }
+      }
 
-//   return fetchMatches().catch(() => retry());
-// };
+      var part = currentWord.substring(0, currentCharIndex);
+      wordElement.textContent = part;
 
-// const url = `https://footapi7.p.rapidapi.com/api/matches/top/${formattedDate}`;
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     'X-RapidAPI-Key': '00f86281a9mshc24dc7075c5d773p1f9175jsn91f5d88b88b1',
-//     'X-RapidAPI-Host': 'footapi7.p.rapidapi.com'
-//   }
-// };
+      if (forwards) {
+        currentCharIndex++;
+      }
+     
+    }, speed);
+  };
 
-// const maxRetries = 3; 
-// const retryDelay = 2000; 
+  var stopAnimation = function () {
+    clearInterval(intervalId);
+  };
 
-// fetchMatchesWithRetry(url, options, maxRetries, retryDelay)
-//   .then(data => {
-//     if (data && data.events) {
-//       const events = data.events.slice(0, 10);
-//       console.log("Prime dieci partite del giorno:");
-//       events.forEach(event => {
-//         const homeTeamName = event.homeTeam.name;
-//         const awayTeamName = event.awayTeam.name;
-//         console.log(`${homeTeamName} vs ${awayTeamName}`);
+  var observerCallback = function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        startAnimation();
+      } else {
+        stopAnimation();
+      }
+    });
+  };
 
-//         const preMatchFormUrl = `https://footapi7.p.rapidapi.com/api/match/${event.id}/form`;
-//         const preMatchFormOptions = {
-//           method: 'GET',
-//           headers: {
-//             'X-RapidAPI-Key': '00f86281a9mshc24dc7075c5d773p1f9175jsn91f5d88b88b1',
-//             'X-RapidAPI-Host': 'footapi7.p.rapidapi.com'
-//           }
-//         };
+  var observerOptions = {
+    root: null,
+    threshold: 0.5 // Modifica qui se desideri un diverso punto di trigger per l'animazione
+  };
 
-//         fetchMatchesWithRetry(preMatchFormUrl, preMatchFormOptions, maxRetries, retryDelay)
-//           .then(preMatchFormData => {
-//             console.log("Dati sulla preMatchForm:");
-//             console.log(preMatchFormData);
-//           })
-//           .catch(error => {
-//             console.error("Errore durante la richiesta dei dati sulla preMatchForm:", error);
-//           });
-//       });
-//     } else {
-//       console.error("Risposta non valida dal server");
-//     }
-//   })
-//   .catch(error => {
-//     console.error("Errore durante la richiesta delle informazioni sulle partite:", error);
-//   });
+  var observer = new IntersectionObserver(observerCallback, observerOptions);
+  observer.observe(parentElement);
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  wordflick();
+});
+
+// end animation modal window
 
 
-//live results Fetch
 
-// const url = 'https://footapi7.p.rapidapi.com/api/matches/live';
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     'X-RapidAPI-Key': '00f86281a9mshc24dc7075c5d773p1f9175jsn91f5d88b88b1',
-//     'X-RapidAPI-Host': 'footapi7.p.rapidapi.com'
-//   }
-// };
+const app = Vue.createApp({
+    data() {
+      return {
+        matches: []
+      };
+    },
+    created() {
+      const currentDate = new Date();
+      const day = currentDate.getDate() + 1;
+      const month = currentDate.getMonth() + 1;
+      const year = currentDate.getFullYear();
+      const formattedDate = `${day}/${month}/${year}`;
+  
+      const fetchMatchesWithRetry = (url, options, maxRetries, retryDelay) => {
+        // ...
+      };
+  
+      const url = `https://footapi7.p.rapidapi.com/api/matches/top/${formattedDate}`;
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '00f86281a9mshc24dc7075c5d773p1f9175jsn91f5d88b88b1',
+          'X-RapidAPI-Host': 'footapi7.p.rapidapi.com'
+        }
+      };
+  
+      const maxRetries = 3; 
+      const retryDelay = 2000; 
+  
+      fetchMatchesWithRetry(url, options, maxRetries, retryDelay)
+        .then(data => {
+          if (data && data.events) {
+            const events = data.events.slice(0, 10);
+            this.matches = events.map(event => ({
+              id: event.id,
+              homeTeamName: event.homeTeam.name,
+              awayTeamName: event.awayTeam.name,
+              preMatchFormData: null
+            }));
+  
+            this.fetchPreMatchForm();
+          } else {
+            console.error("Risposta non valida dal server");
+          }
+        })
+        .catch(error => {
+          console.error("Errore durante la richiesta delle informazioni sulle partite:", error);
+        });
+    },
+    methods: {
+      fetchPreMatchForm() {
+        const maxRetries = 3; 
+        const retryDelay = 2000; 
+  
+        this.matches.forEach(match => {
+          const preMatchFormUrl = `https://footapi7.p.rapidapi.com/api/match/${match.id}/form`;
+          const preMatchFormOptions = {
+            method: 'GET',
+            headers: {
+              'X-RapidAPI-Key': '00f86281a9mshc24dc7075c5d773p1f9175jsn91f5d88b88b1',
+              'X-RapidAPI-Host': 'footapi7.p.rapidapi.com'
+            }
+          };
+  
+          fetchMatchesWithRetry(preMatchFormUrl, preMatchFormOptions, maxRetries, retryDelay)
+            .then(preMatchFormData => {
+              match.preMatchFormData = preMatchFormData;
+            })
+            .catch(error => {
+              console.error("Errore durante la richiesta dei dati sulla preMatchForm:", error);
+            });
+        });
+      }
+    }
+  });
+  
+  app.mount('#topmatches');
 
-// fetch(url, options)
-//   .then(response => response.json())
-//   .then(result => {
-//     const matches = result.events;
 
-//     matches.forEach(match => {
-//       const homeTeamName = match.homeTeam.name;
-//       const awayTeamName = match.awayTeam.name;
-//       const homeScore = match.homeScore.current;
-//       const awayScore = match.awayScore.current;
-//       const league = match.tournament.name;
-
-//       console.log("Partita:", homeTeamName, "vs", awayTeamName);
-//       console.log("Punteggio:", homeScore, "-", awayScore);
-//       console.log("Lega:", league);
-//     });
-//   })
-//   .catch(error => {
-//     console.error(error);
-//   });
 
 
 

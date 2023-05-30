@@ -21,7 +21,7 @@
 .football_img{
     width: 60px;
     transform-origin: center center;
-    animation: football .8s infinite ;
+    animation: football 2s linear infinite ;
 }   
 
 @keyframes football{
@@ -86,25 +86,40 @@
     z-index: 9998;
   }
   
-  @keyframes bounceIn {
-    0% {
-      transform: translate(-50%, -50%) scale(0);
-    }
-    60% {
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-    80% {
-      transform: translate(-50%, -50%) scale(0.9);
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1);
-    }
+@keyframes bounceIn {
+0% {
+    transform: translate(-50%, -50%) scale(0);
+}
+60% {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+80% {
+    transform: translate(-50%, -50%) scale(0.9);
+}
+100% {
+    transform: translate(-50%, -50%) scale(1);
+}
+}
+
+.closebtn{
+position: absolute;
+top: 1em;
+right: 1em;
+cursor: pointer;
+color: #4AB5B9;
+font-size: 35px;
+}
+
+  //typing animation 
+
+  .word{
+    width: 90%;
+    margin: 0 auto;
+    color: white;
+    font-size: 30px;
+    padding-top: 20px;
   }
 
-  .closebtn{
-    position: absolute;
-    top: 1em;
-    right: 1em;
-    cursor: pointer;
-    color: #4AB5B9;
-  }
+
+
+//ANIMATION ENDS
