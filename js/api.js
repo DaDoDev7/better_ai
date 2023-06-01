@@ -78,4 +78,43 @@ document.addEventListener('DOMContentLoaded', function () {
 //TOP MATCHES 💵🐦❤️🤣
 
 
+const app = Vue.createApp({
+  data() {
+    return {
+      matches: []
+    };
+  },
+  mounted() {
+    this.fetchTopMatches();
+  },
+  methods: {
+    async fetchTopMatches() {
+      const currentDate = new Date();
+      const day = currentDate.getDate() + 1;
+      const month = currentDate.getMonth() + 1;
+      const year = currentDate.getFullYear();
+
+      const url = `https://footapi7.p.rapidapi.com/api/matches/top/${day}/${month}/${year}`;
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '00f86281a9mshc24dc7075c5d773p1f9175jsn91f5d88b88b1',
+          'X-RapidAPI-Host': 'footapi7.p.rapidapi.com'
+        }
+      };
+
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        this.matches = data.events.slice(0, 10);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
+});
+
+app.mount('#topmatches');
+
+
 

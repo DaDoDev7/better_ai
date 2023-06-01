@@ -137,21 +137,15 @@
                 <div class="football"><img class="football_img"  src="img/footballsvg.svg" alt=""></div>
                 <h1>Ai generator</h1>
                 <h6>Click on any of the matches to get the AI odds</h6>
-                <div id="topmatches" >
-                  <h1>Top Matches</h1>
+                <div id="topmatches">
+                  <h5>Top Matches</h5>
                   <div class="ai_window_matches">
-                    <div class="match_ai">
-                      atletico - panamense
-                    </div>
-                    <div class="match_ai">
-                        atletico - panamense
-                    </div>
-                    <div class="match_ai">
-                        atletico - panamense
+                    <div class="match_ai" v-for="match in matches" :key="match.id">
+                      {{ match.homeTeam.name }} - {{ match.awayTeam.name }}
                     </div>
                   </div>
                 </div>
-                </div>
+              </div>
             </div>
             <!-- overlay -->
 
@@ -186,7 +180,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://kit.fontawesome.com/e7815bde46.js" crossorigin="anonymous"></script>
     <script src="js/api.js"></script>
-    <script src="js/app.js"></script>
+    <!-- <script src="js/app.js"></script> -->
     <!-- Particles (dont'move !) -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="js/main.js"></script>

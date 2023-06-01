@@ -6,36 +6,39 @@ particlesJS("particles-js", {"particles":{"number":{"value":80,"density":{"enabl
 
 //Modal Window
 
-var matchElements = document.querySelectorAll('.match_ai');
-var modalWindow = document.querySelector('.modalwindow');
-var closeButton = document.querySelector('.closebtn');
-var overlay = document.querySelector('.overlay');
+document.addEventListener('DOMContentLoaded', function() {
+  var matchElements = document.querySelectorAll('.match_ai');
+  var modalWindow = document.querySelector('.modalwindow');
+  var closeButton = document.querySelector('.closebtn');
+  var overlay = document.querySelector('.overlay');
 
-matchElements.forEach(function(matchElement) {
-  matchElement.addEventListener('click', function() {
-    showModal();
+  matchElements.forEach(function(matchElement) {
+    matchElement.addEventListener('click', function() {
+      showModal();
+    });
   });
+
+  closeButton.addEventListener('click', function() {
+    closeModal();
+  });
+
+  overlay.addEventListener('click', function() {
+    closeModal();
+  });
+
+  function showModal() {
+    modalWindow.style.display = 'block';
+    overlay.style.display = 'block';
+    document.body.classList.add('modal-open');
+  }
+
+  function closeModal() {
+    modalWindow.style.display = 'none';
+    overlay.style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
 });
 
-closeButton.addEventListener('click', function() {
-  closeModal();
-});
-
-overlay.addEventListener('click', function() {
-  closeModal();
-});
-
-function showModal() {
-  modalWindow.style.display = 'block';
-  overlay.style.display = 'block';
-  document.body.classList.add('modal-open');
-}
-
-function closeModal() {
-  modalWindow.style.display = 'none';
-  overlay.style.display = 'none';
-  document.body.classList.remove('modal-open');
-}
 //end modal windows
 
 
