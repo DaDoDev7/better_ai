@@ -4,42 +4,7 @@ particlesJS("particles-js", {"particles":{"number":{"value":80,"density":{"enabl
 
 
 
-//Modal Window
 
-document.addEventListener('DOMContentLoaded', function() {
-  var matchElements = document.querySelectorAll('.match_ai');
-  var modalWindow = document.querySelector('.modalwindow');
-  var closeButton = document.querySelector('.closebtn');
-  var overlay = document.querySelector('.overlay');
-
-  matchElements.forEach(function(matchElement) {
-    matchElement.addEventListener('click', function() {
-      showModal();
-    });
-  });
-
-  closeButton.addEventListener('click', function() {
-    closeModal();
-  });
-
-  overlay.addEventListener('click', function() {
-    closeModal();
-  });
-
-  function showModal() {
-    modalWindow.style.display = 'block';
-    overlay.style.display = 'block';
-    document.body.classList.add('modal-open');
-  }
-
-  function closeModal() {
-    modalWindow.style.display = 'none';
-    overlay.style.display = 'none';
-    document.body.classList.remove('modal-open');
-  }
-});
-
-//end modal windows
 
 
 

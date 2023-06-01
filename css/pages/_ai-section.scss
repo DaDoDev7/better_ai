@@ -73,7 +73,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 9999;
-    animation: bounceIn 0.5s forwards;
+    animation: bounceIn .5s forwards;
   }
   .overlay {
     display: none;
@@ -123,3 +123,4 @@ font-size: 35px;
 
 
 //ANIMATION ENDS
+
