@@ -18,7 +18,7 @@
     
     <!-- LOADER -->
 
-    <div id="loader_wrapper">
+    <!-- <div id="loader_wrapper">
         <h4>Better AI</h4>
         <div class="spinner">
         
@@ -29,7 +29,7 @@
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div> -->
     <!-- NAVIGATION -->
 
     <nav class="nav">
@@ -93,7 +93,7 @@
                   <div class="teamLogo">
                     <img :src="match.homeTeam.image" alt="Home Team Logo" class="team-logo" />
                   </div>
-                  <p>{{ match.homeTeam.name }} vs {{ match.awayTeam.name }}</p>
+                  <p>{{ match.homeTeam.name }} - {{ match.awayTeam.name }}</p>
                   <div class="teamLogo">
                     <img :src="match.awayTeam.image" alt="Away Team Logo" class="team-logo" />
                   </div>
@@ -113,7 +113,7 @@
                   <div class="teamLogo">
                     <img :src="match.homeTeam.image" alt="Home Team Logo" class="team-logo" />
                   </div>
-                  <p>{{ match.homeTeam.name }} vs {{ match.awayTeam.name }}</p>
+                  <p>{{ match.homeTeam.name }} - {{ match.awayTeam.name }}</p>
                   <div class="teamLogo">
                     <img :src="match.awayTeam.image" alt="Away Team Logo" class="team-logo" />
                   </div>
@@ -124,20 +124,7 @@
 
               <div id="rankings" class="liveMatchesContainer">
                 <h1>Rankings</h1>
-                <div v-for="match in matches" :key="match.id" class="match">
-                  <div class="teamlogo">
-                 
-                  </div>
-                  <div class="teamLogo">
-                    <img :src="match.homeTeam.image" alt="Home Team Logo" class="team-logo" />
-                  </div>
-                  <p>{{ match.homeTeam.name }} vs {{ match.awayTeam.name }}</p>
-                  <div class="teamLogo">
-                    <img :src="match.awayTeam.image" alt="Away Team Logo" class="team-logo" />
-                  </div>
-                  <p>{{ match.homeScore.current }} - {{ match.awayScore.current }}</p>
-                  <p>Ligue: {{ match.tournament.name }}</p>
-                </div>
+                
             
               </div>
 
@@ -150,20 +137,21 @@
                 <div class="football"><img class="football_img"  src="img/footballsvg.svg" alt=""></div>
                 <h1>Ai generator</h1>
                 <h6>Click on any of the matches to get the AI odds</h6>
-                <div id="topmatches" class="ai_window_matches">
-                  <!-- // loop vue  -->
-                    <div v-for="match in matches" :key="match.id" class="match_ai">
-                      <div class="logoteam">
-                        <img :src="getLogoUrl(match.homeTeamId)" alt="Logo Squadra Casa">
-                      </div>
-                      <span>{{ match.homeTeamName }}</span> -
-                      <span>{{ match.awayTeamName }}</span>
-                      <div class="logoteam">
-                        <img :src="getLogoUrl(match.awayTeamId)" alt="Logo Squadra Trasferta">
-                      </div>
+                <div id="topmatches" >
+                  <h1>Top Matches</h1>
+                  <div class="ai_window_matches">
+                    <div class="match_ai">
+                      atletico - panamense
                     </div>
-                    
-                 </div>
+                    <div class="match_ai">
+                        atletico - panamense
+                    </div>
+                    <div class="match_ai">
+                        atletico - panamense
+                    </div>
+                  </div>
+                </div>
+                </div>
             </div>
             <!-- overlay -->
 
@@ -195,11 +183,12 @@
         <!-- FOOTER END -->
 
     </div>
-    <script src="js/main.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://kit.fontawesome.com/e7815bde46.js" crossorigin="anonymous"></script>
-    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>   
-   <script src="js/app.js"></script>
     <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Particles (dont'move !) -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
