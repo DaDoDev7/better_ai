@@ -1,113 +1,4 @@
-// //Modal Window
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   var matchElements = document.querySelectorAll('.match_ai');
-//   var modalWindow = document.querySelector('.modalwindow');
-//   var closeButton = document.querySelector('.closebtn');
-//   var overlay = document.querySelector('.overlay');
-
-//   matchElements.forEach(function(matchElement) {
-//     matchElement.addEventListener('click', function() {
-//       showModal();
-//     });
-//   });
-
-//   closeButton.addEventListener('click', function() {
-//     closeModal();
-//   });
-
-//   overlay.addEventListener('click', function() {
-//     closeModal();
-//   });
-
-//   function showModal() {
-//     modalWindow.style.display = 'block';
-//     overlay.style.display = 'block';
-//     document.body.classList.add('modal-open');
-//   }
-
-//   function closeModal() {
-//     modalWindow.style.display = 'none';
-//     overlay.style.display = 'none';
-//     document.body.classList.remove('modal-open');
-//   }
-// });
-
-//end modal windows
-
-
-
-// typing animation
-
-// var words = [' asudhPORCO DIODIDODODIODIDOd'];
-// var currentWordIndex = 0;
-// var currentCharIndex = 0;
-// var forwards = true;
-// var speed = 70;
-
-// var wordElement = document.querySelector('.word');
-// var parentElement = wordElement.parentNode;
-
-// var wordflick = function () {
-//   var intervalId; // Variabile per l'ID dell'intervallo
-
-//   var startAnimation = function () {
-//     intervalId = setInterval(function () {
-//       var currentWord = words[currentWordIndex];
-
-//       if (forwards) {
-//         if (currentCharIndex >= currentWord.length) {
-//           forwards = false;
-//         }
-//       }
-//       else {
-//         if (currentCharIndex == 0) {
-//           forwards = true;
-//           currentWordIndex++;
-//           if (currentWordIndex >= words.length) {
-//             currentWordIndex = 0;
-//           }
-//         }
-//       }
-
-//       var part = currentWord.substring(0, currentCharIndex);
-//       wordElement.textContent = part;
-
-//       if (forwards) {
-//         currentCharIndex++;
-//       }
-     
-//     }, speed);
-//   };
-
-//   var stopAnimation = function () {
-//     clearInterval(intervalId);
-//   };
-
-//   var observerCallback = function (entries) {
-//     entries.forEach(function (entry) {
-//       if (entry.isIntersecting) {
-//         startAnimation();
-//       } else {
-//         stopAnimation();
-//       }
-//     });
-//   };
-
-//   var observerOptions = {
-//     root: null,
-//     threshold: 0.5 // Modifica qui se desideri un diverso punto di trigger per l'animazione
-//   };
-
-//   var observer = new IntersectionObserver(observerCallback, observerOptions);
-//   observer.observe(parentElement);
-// };
-
-// document.addEventListener('DOMContentLoaded', function () {
-//   wordflick();
-// });
-
-// end animation modal window
+// openai key : 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
 
 
 
@@ -148,6 +39,44 @@ const app = Vue.createApp({
         console.error(error);
       }
     },
+
+    // richiesta openAI
+
+    async fetchChatMessage() {
+      const url = 'https://api.openai.com/v1/chat/completions'; // Sostituisci con l'URL corretto per l'API di OpenAI
+      const apiKey = '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'; // Sostituisci con la tua chiave API di OpenAI
+
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`
+      };
+
+      const data = {
+        // Oggetto contenente i dati della richiesta di chat
+      };
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          const responseData = await response.json();
+          // Gestisci la risposta dalla chiamata API di OpenAI qui
+          const message = responseData.message;
+          this.words.push(message);
+        } else {
+          throw new Error('Error');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    // fine richiesta openAI
+
     showModal(match) {
       const modalWindow = document.querySelector('.modalwindow');
       const overlay = document.querySelector('.overlay');
@@ -167,7 +96,7 @@ const app = Vue.createApp({
       document.body.classList.remove('modal-open');
     },
     startWordAnimation() {
-      const words = [' ciaoasdiuasjdasojuid'];
+      const words = ['ciaoasdiuasjdasojuid'];
       let currentWordIndex = 0;
       let currentCharIndex = 0;
       let forwards = true;
